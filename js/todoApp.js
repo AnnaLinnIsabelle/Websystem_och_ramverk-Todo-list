@@ -24,13 +24,11 @@ var TodoApp = (function () {
         todoIds.splice(index, 1);
     }
 
-    function addTodo(todo='  ', id='0') {
+    function addTodo(todo=' ') {
         var inputTodo = ($inputField.val() ? $inputField.val() : todo);
-        if (id==0) {
             i++;
             id = 'todo-' + i;
             todoIds.push(id);
-        }
         var newTodo = $('<li></li>', {
             id: id
         });
@@ -67,14 +65,10 @@ var TodoApp = (function () {
 
     function init() {
         // Application init code
-        // The application is initialized with 5 "empty to-dos"
         if(localStorage.getItem('todoIds')) {
             loadList();
         } else {
             i = 0;
-            for (j = 0; j < 5; j++) {
-                addTodo();
-            }
         }
         $addButton.on('click', addTodo);
         $saveButton.on('click', saveList);
